@@ -1,13 +1,14 @@
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store, createLogger, MutationPayload } from 'vuex'
 
-import todomvc, { TodoMvcState, TODO_TODOS_KEY, TODO_DONES_KEY, TODO_DELETES_KEY } from './modules/todomvc'
-// import products from './modules/products'
+import todomvc, { TodoMvcState, TODO_TODOS_KEY } from './modules/todomvc'
+import basic, { BasicState } from './modules/basic'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 export interface State {
   todomvc: TodoMvcState;
+  basic: BasicState;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol('vuex')
@@ -24,7 +25,7 @@ const plugins = debug ? [createLogger(), localStoragePlugin] : []
 export default createStore({
   modules: {
     todomvc,
-    // products,
+    basic,
   },
   strict: debug,
   plugins,
