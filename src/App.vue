@@ -1,10 +1,12 @@
 <template>
-  <div ref="containerRef">
-    <div id="nav">
-      <router-link to="/">TodoMvc</router-link>|
-      <router-link to="/about">About</router-link>
+  <div class="fullscreen" ref="containerRef">
+    <div class="content">
+      <div id="nav">
+        <router-link to="/">TodoMvc</router-link>|
+        <router-link to="/about">About</router-link>
+      </div>
+      <router-view />
     </div>
-    <router-view />
   </div>
 </template>
 
@@ -61,6 +63,7 @@ export default defineComponent({
 
 #nav {
   padding: 30px;
+  // width: 500px;
 
   a {
     font-weight: bold;
@@ -70,5 +73,16 @@ export default defineComponent({
       color: #42b983;
     }
   }
+}
+.fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.content {
+  margin: 0 auto;
+  width: 500px;
 }
 </style>

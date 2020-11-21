@@ -1,9 +1,13 @@
 
 import axios, { AxiosResponse } from 'axios'
-import { Loading, Message, MessageBox } from 'element-plus'
+// import { Loading, Message, MessageBox } from 'element-plus'
+import { Message } from 'element-plus/lib/message'
+import { Loading } from 'element-plus/lib/loading'
 import { USER_NOT_LOGIN } from '@/constants/base'
 
 import { falsyFilter } from './utils'
+
+let loadingInstance: any// loading
 
 const transAxiosResponse = <ResponseData extends object | boolean>({
   data: axiosData,
@@ -33,6 +37,11 @@ instance.interceptors.request.use(conf => {
     // 过滤所有空字符串参数
     params = falsyFilter(params)
   }
+  // loadingInstance = Loading({
+  //   background: 'rgb(0,0,0,0.1)',
+  //   spinner: 'el-icon-loading',
+  //   text: '加载中',
+  // })
   return {
     ...conf,
     params,
@@ -45,9 +54,12 @@ instance.interceptors.request.use(conf => {
 
 instance.interceptors.response.use(
   response => {
+    // 关闭loading
+    // loadingInstance.close()
     if (response.status >= 200 && response.status < 300) {
       return response
     }
+
     // message.error(response.statusText)
     return Promise.reject(new Error(response.statusText))
   },

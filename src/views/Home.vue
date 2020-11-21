@@ -1,7 +1,7 @@
 <style src="todomvc-app-css/index.css"></style>
 
 <template>
-  <section class="todoapp">
+  <section class="todoapp todo">
     <!-- header -->
     <header class="header">
       <h1>todos</h1>
@@ -104,3 +104,5 @@ export default {
   },
 }
 </script>
+<style lang="sass" scoped>
+</style>

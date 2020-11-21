@@ -7,4 +7,5 @@ import store, { key } from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
-createApp(App).use(store, key).use(router).use(ElementPlus).mount('#app')
+const app = createApp(App)
+app.use(store, key).use(router).use(ElementPlus).mount('#app')
